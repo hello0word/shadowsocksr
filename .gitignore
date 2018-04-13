@@ -13,6 +13,11 @@ sdist
 develop-eggs
 .installed.cfg
 
+
+.vs
+debain
+
+
 # Installer logs
 pip-log.txt
 
