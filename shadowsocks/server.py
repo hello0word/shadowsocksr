@@ -25,12 +25,12 @@ import signal
 
 if __name__ == '__main__':
     import inspect
-    file_path = os.path.dirname(os.path.realpath(inspect.getfile(inspect.currentframe())))
-    sys.path.insert(0, os.path.join(file_path, '../'))
+    file_path = os.path.dirname(os.path.realpath(inspect.getfile(inspect.currentframe())))#获取当前文件路径
+    sys.path.insert(0, os.path.join(file_path, '../'))#将当前路径添加到环境变量
 
 from shadowsocks import shell, daemon, eventloop, tcprelay, udprelay, \
     asyncdns, manager, common
-
+logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def main():
     shell.check_python()
@@ -59,7 +59,7 @@ def main():
             config['port_password'][str(server_port)] = config['password']
 
     if not config.get('dns_ipv6', False):
-        asyncdns.IPV6_CONNECTION_SUPPORT = False
+        asyncdns.IPV6_CONNECTION_SUPPORT = False#使ipV6失效
 
     if config.get('manager_address', 0):
         logging.info('entering manager mode')
